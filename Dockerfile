@@ -15,4 +15,4 @@ CMD pnpm dev
 # backend
 FROM base as backend
 RUN yarn global add @nestjs/cli
-CMD pnpm run start:dev
+CMD pnpm turbo dev

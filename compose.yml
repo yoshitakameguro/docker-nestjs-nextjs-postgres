@@ -2,11 +2,12 @@ services:
   frontend:
     container_name: frontend
     build:
-      context: ./docker/node
+      context: .
       target: frontend
     working_dir: /app
     volumes:
-      - ./frontend:/app
+      - ./turborepo:/app
+      - /app/apps/api
     tty: true
     ports:
       - "3000:3000"
@@ -14,11 +15,13 @@ services:
   backend:
     container_name: backend
     build:
-      context: ./docker/node
+      context: .
       target: backend
     working_dir: /app
     volumes:
-      - ./backend:/app
+      - ./turborepo:/app
+      - /app/apps/web
+      - /app/apps/docs
     tty: true
     ports:
       - "8080:3000"
