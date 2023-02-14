@@ -31,4 +31,4 @@ FROM base as runner
 WORKDIR /app
 COPY --from=installer /app/apps/web/next.config.js .
 COPY --from=installer /app/apps/web/package.json .
-CMD pnpm dev
+CMD pnpm dev --scope=web

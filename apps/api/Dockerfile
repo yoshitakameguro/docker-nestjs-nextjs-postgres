@@ -30,4 +30,4 @@ RUN pnpm turbo run build --filter=api...
 FROM base as runner
 WORKDIR /app
 COPY --from=installer /app .
-CMD pnpm dev
+CMD pnpm dev --scope=api
