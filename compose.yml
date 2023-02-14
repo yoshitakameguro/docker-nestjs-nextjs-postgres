@@ -3,26 +3,24 @@ services:
     container_name: frontend
     build:
       context: .
-      target: frontend
+      dockerfile: ./apps/web/Dockerfile
     working_dir: /app
     volumes:
-      - ./turborepo:/app
+      - ./:/app
       - /app/apps/api
-    tty: true
     ports:
       - "3000:3000"
-      - "3001:3001"
+    tty: true
   backend:
     container_name: backend
     build:
       context: .
-      target: backend
+      dockerfile: ./apps/api/Dockerfile
     working_dir: /app
     volumes:
-      - ./turborepo:/app
+      - ./:/app
       - /app/apps/web
-      - /app/apps/docs
-    tty: true
+    restart: always
     ports:
       - "8080:3000"
     depends_on:
